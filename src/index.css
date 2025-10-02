@@ -29,7 +29,7 @@ body {
   /* background-color: #08090b; */
   font-family: 'Regrade', sans-serif;
   color: #ffffff;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 :root {

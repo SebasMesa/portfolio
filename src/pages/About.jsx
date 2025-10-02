@@ -4,7 +4,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import LogoAbout from '../assets/logoabout.png';
 
 function Model() {
-    const { scene } = useGLTF("/models/logoAlt.glb");
+    const { scene } = useGLTF("/portfolio/models/logoAlt.glb");
     const isMobile = window.innerWidth < 768;
     const scale = isMobile ? 2 : 6;
     const position = isMobile ? [0, -2, 0] : [0, -3, 0];

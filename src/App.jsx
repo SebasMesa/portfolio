@@ -63,7 +63,7 @@ function App() {
                       <Parallax
                         translateX={['-100vw', '100vw']}
                         translateY={['-150px', '150px']}
-                        styleOuter={{
+                        style={{
                           position: 'absolute',
                           top: 0,
                           left: 0,
