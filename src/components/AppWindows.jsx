@@ -5,12 +5,13 @@ import Safari from '../components/Safari'
 import MusicApp from "./MusicApp";
 import VSCode from "./VSCode";
 import Photos from "./Photos";
+import Notes from "./Notes";
 
 const AppWindows = ({ openApp, setOpenApp }) => {
     return (
         <>
 
-            <MusicApp/>
+            <MusicApp />
 
             {openApp === "visual" && (
                 <MacWindow title="Visual Studio Code" x={100} y={100} onClose={() => setOpenApp(null)}>
@@ -31,6 +32,18 @@ const AppWindows = ({ openApp, setOpenApp }) => {
                 </MacWindow>
             )}
 
+            {openApp === "notes" && (
+                <MacWindow 
+                    title="Notas" 
+                    x={75}
+                    y={25}
+                    w={window.innerWidth - 700}
+                    h={window.innerHeight - 200}
+                    onClose={() => setOpenApp(null)}>
+                    <Notes />
+                </MacWindow>
+            )}
+
             {openApp === "spotify" && (
                 <MacWindow title="Youtube Music" x={500} y={150} onClose={() => setOpenApp(null)}>
                     <Player />
@@ -39,7 +52,7 @@ const AppWindows = ({ openApp, setOpenApp }) => {
 
             {openApp === "safari" && (
                 <MacWindow title="Safari" x={700} y={50} w={1100} h={600} onClose={() => setOpenApp(null)}>
-                    <Safari/>
+                    <Safari />
                 </MacWindow>
             )}
         </>
