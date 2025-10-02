@@ -24,7 +24,7 @@ import Punto from './assets/punto.png';
 function App() {
   return (
     <ParallaxProvider>
-      <Router>
+      <Router basename="/portfolio">
         <Routes>
           {/* Página principal */}
           <Route
