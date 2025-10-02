@@ -1,0 +1,49 @@
+@font-face {
+    font-family: SfPro;
+    src: url('assets/font/sf-pro-display/SF-Pro-Display-Medium.otf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: SfProLight;
+    src: url('assets/font/sf-pro-display/SF-Pro-Display-Light.otf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+body {
+    font-family: SfPro, sans-serif;
+}
+
+
+.font-delgada {
+  font-family: SfProLight, sans-serif;
+}
+
+/* Scrollbar para navegadores WebKit (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+  width: 10px;              /* ancho de la barra */
+  height: 10px;             /* alto para scroll horizontal */
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;      /* fondo de la pista */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2a;      /* color de la barra */
+  border-radius: 10px;      /* bordes redondeados */
+  border: 2px solid #0f0f0f; /* espacio alrededor para dar efecto "acolchado" */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444;         /* color al hacer hover */
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;              /* tamaño */
+  scrollbar-color: #2a2a2a #0f0f0f;   /* thumb y track */
+}
