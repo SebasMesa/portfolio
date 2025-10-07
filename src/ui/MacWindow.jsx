@@ -9,6 +9,7 @@ const MacWindow = ({ title, children, onClose, x, y, w, h }) => (
       height: h || 600,
     }}
     bounds="parent"
+    dragHandleClassName="window-header"
   >
     <div className="bg-white/10 backdrop-blur-lg border border-gray-700 rounded-xl shadow-lg w-full h-full flex flex-col">
       <div className="window-header flex items-center px-3 py-2 bg-gray-900 rounded-t-xl cursor-move">

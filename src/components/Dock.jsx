@@ -12,9 +12,9 @@ import Youtube from "../assets/youtube.png";
 
 const Dock = ({ setOpenApp }) => {
   return (
-    <div className="flex items-end justify-center min-h-screen">
+    <div className="flex items-center md:items-end md:justify-center min-h-screen">
       <div className="bg-glass-mac mb-[4rem] px-[20px] py-[10px] text-center mx-[16px]">
-        <div className="flex items-center gap-[1rem]">
+        <div className="flex md:flex-row flex-col items-center gap-[1rem]">
           <DockItem
             icon={VisualStudioLogo}
             label="Visual Studio"
@@ -31,7 +31,7 @@ const Dock = ({ setOpenApp }) => {
             onClick={() => setOpenApp("spotify")}
           />
 
-          <div className="w-[2px] h-[40px] bg-white/20" />
+          <div className="w-[2px] h-[40px] bg-white/20 hidden md:block" />
 
           <DockItem
             icon={Photos}
@@ -44,7 +44,7 @@ const Dock = ({ setOpenApp }) => {
             onClick={() => setOpenApp("notes")}
           />
 
-          <div className="w-[2px] h-[40px] bg-white/20" />
+          <div className="w-[2px] h-[40px] bg-white/20 hidden md:block" />
 
           <DockItem
             icon={Instagram}
@@ -52,7 +52,7 @@ const Dock = ({ setOpenApp }) => {
             href="https://instagram.com/lefiamma"
           />
           <DockItem icon={Mail} label="Mail" />
-          <div className="w-[2px] h-[40px] bg-white/20" />
+          <div className="w-[2px] h-[40px] bg-white/20 hidden md:block" />
           <DockItem icon={Bin} label="Papelera" />
         </div>
       </div>

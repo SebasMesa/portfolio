@@ -21,6 +21,8 @@ export default function MusicApp() {
     const [currentSongIndex, setCurrentSongIndex] = useState(0);
     const [isPlaying, setIsPlaying] = useState(false);
     const audioRef = useRef(null);
+    const isMobile = window.innerWidth < 768;  
+    const screenWidth = window.innerWidth;
 
     const currentSong = songs[currentSongIndex];
 
@@ -53,12 +55,12 @@ export default function MusicApp() {
     useEffect(() => {
         if (isPlaying) {
             audioRef.current.play();
-        }
+        } 
     }, [currentSongIndex]);
 
     return (
-        <div className="">
-            <div className="fixed w-[400px] top-5 right-5 bg-glass-mac backdrop-blur-md px-6 py-4 rounded-2xl flex justify-between items-center shadow-2xl border border-white/10">
+        <div className="flex justify-center md:justify-end">
+            <div className={`w-[92%] fixed md:w-[400px] bottom-5 md:bottom-auto md:top-5 md:right-5 bg-glass-mac backdrop-blur-md px-6 py-4 rounded-2xl flex justify-between items-center shadow-2xl border border-white/10`}>
 
 
                 {/* Info canción */}

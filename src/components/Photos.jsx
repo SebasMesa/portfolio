@@ -9,6 +9,7 @@ const Photos = () => {
   const [likedPhotos, setLikedPhotos] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = window.innerWidth < 768;
 
   const photos = [
     { id: 1, url: photo1, title: 'Back' },
@@ -20,19 +21,20 @@ const Photos = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
       // Auto-hide sidebar en pantallas pequeñas
-      if (window.innerWidth < 1024) {
+      if (window.innerWidth < 768) {
         setSidebarOpen(false);
       }
     };
 
     window.addEventListener('resize', handleResize);
+    handleResize(); // Llamar inicialmente para configurar el estado
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const toggleLike = (photoId, e) => {
     e?.stopPropagation();
-    setLikedPhotos(prev => 
-      prev.includes(photoId) 
+    setLikedPhotos(prev =>
+      prev.includes(photoId)
         ? prev.filter(id => id !== photoId)
         : [...prev, photoId]
     );
@@ -40,6 +42,8 @@ const Photos = () => {
 
   // Calcular columnas según ancho de ventana
   const getColumns = () => {
+    if (isMobile) return 2; // Siempre 2 columnas en móvil
+
     if (!sidebarOpen) {
       if (windowWidth >= 1600) return 6;
       if (windowWidth >= 1400) return 5;
@@ -73,7 +77,7 @@ const Photos = () => {
           <SidebarItem label="2024" count={23} />
           <SidebarItem label="2023" count={12} />
           <SidebarItem label="2022" count={67} />
-          
+
         </div>
       </div>
 
@@ -88,10 +92,13 @@ const Photos = () => {
             >
               {sidebarOpen ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
             </button>
-            <h1 className="text-white text-lg font-medium">Todas las Fotos</h1>
-            <span className="text-gray-500 text-sm">{photos.length} fotos</span>
+
+            <div className={`${isMobile ? 'hidden' : ''} flex flex-col`}>
+              <h1 className="text-white text-lg font-medium">Todas las Fotos</h1>
+              <span className="text-gray-500 text-sm">{photos.length} fotos</span>
+            </div>
           </div>
-          
+
           <div className="flex items-center gap-3">
             <div className="relative">
               <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
@@ -110,7 +117,7 @@ const Photos = () => {
 
         {/* Photo Grid */}
         <div className="flex-1 overflow-y-auto p-6">
-          <div 
+          <div
             className="grid gap-2"
             style={{ gridTemplateColumns: `repeat(${getColumns()}, 1fr)` }}
           >
@@ -129,8 +136,8 @@ const Photos = () => {
 
       {/* Modal */}
       {selectedPhoto && (
-        <PhotoModal 
-          photo={selectedPhoto} 
+        <PhotoModal
+          photo={selectedPhoto}
           onClose={() => setSelectedPhoto(null)}
           isLiked={likedPhotos.includes(selectedPhoto.id)}
           onLike={(e) => toggleLike(selectedPhoto.id, e)}
@@ -165,17 +172,17 @@ const PhotoCard = ({ photo, onSelect, isLiked, onLike }) => {
         alt={photo.title}
         className="w-full h-full object-cover transition-all duration-500 group-hover:scale-110"
       />
-      
+
       <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent 
         opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        
+
         <div className="absolute top-2 right-2 transform translate-y-[-10px] opacity-0 
           group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
           <button
             onClick={onLike}
             className={`p-2 rounded-full backdrop-blur-md transition-all duration-200
-              ${isLiked 
-                ? 'bg-red-500/90 text-white' 
+              ${isLiked
+                ? 'bg-red-500/90 text-white'
                 : 'bg-black/40 text-white/90 hover:bg-black/60'}`}
           >
             <Heart size={14} fill={isLiked ? 'currentColor' : 'none'} strokeWidth={2} />
@@ -193,7 +200,7 @@ const PhotoCard = ({ photo, onSelect, isLiked, onLike }) => {
 
 const PhotoModal = ({ photo, onClose, isLiked, onLike }) => {
   return (
-    <div 
+    <div
       className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-sm"
       onClick={onClose}
     >
@@ -211,7 +218,7 @@ const PhotoModal = ({ photo, onClose, isLiked, onLike }) => {
           alt={photo.title}
           className="relative rounded-xl max-h-[90vh] w-auto shadow-2xl"
         />
-        
+
         <div className="absolute bottom-0 left-0 right-0 p-5 bg-gradient-to-t from-black/90 via-black/50 to-transparent 
           rounded-b-xl">
           <h2 className="text-white text-xl font-light mb-3">{photo.title}</h2>
@@ -219,8 +226,8 @@ const PhotoModal = ({ photo, onClose, isLiked, onLike }) => {
             <button
               onClick={onLike}
               className={`px-4 py-2 rounded-lg transition-all duration-200 flex items-center gap-2 text-sm
-                ${isLiked 
-                  ? 'bg-red-500/80 text-white hover:bg-red-500' 
+                ${isLiked
+                  ? 'bg-red-500/80 text-white hover:bg-red-500'
                   : 'bg-white/10 text-white/90 hover:bg-white/20 backdrop-blur-sm'}`}
             >
               <Heart size={16} fill={isLiked ? 'currentColor' : 'none'} strokeWidth={2} />

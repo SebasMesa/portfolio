@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { ChevronRight, Tag, Trash2, Folder } from 'lucide-react';
+import { IoMdClose } from "react-icons/io";
 
 const Notes = () => {
   const [selectedNote, setSelectedNote] = useState('about');
+  const [showSidebar, setShowSidebar] = useState(false);
+  const isMobile = window.innerWidth < 768;
 
   const folders = [
     { id: 'icloud', name: 'iCloud', icon: '☁️' },
@@ -25,11 +28,18 @@ const Notes = () => {
   return (
     <div className="h-full bg-[#1e1e1e] flex overflow-hidden text-gray-200">
       {/* Sidebar izquierdo - Folders */}
-      <div className="w-56 bg-[#252526] border-r border-gray-700 flex flex-col">
-        <div className="p-3 border-b border-gray-700">
+      <div className={`${isMobile ? (showSidebar ? 'w-56 absolute inset-y-0 left-0 z-20' : 'hidden') : 'w-56'} bg-[#252526] border-r border-gray-700 flex flex-col`}>
+        <div className="p-3 border-b border-gray-700 flex items-center justify-between">
           <h2 className="text-xs font-semibold text-gray-400 uppercase tracking-wider px-2">iCloud</h2>
+
+          <button
+            onClick={() => setShowSidebar(!showSidebar)}
+            className={`md:hidden p-1.5 hover:bg-[#2d2d30] rounded transition-colors text-gray-400 hover:text-white`}
+          >
+            <IoMdClose className="text-lg" />
+          </button>
         </div>
-        
+
         <div className="flex-1 overflow-y-auto py-2">
           {folders.map((folder) => (
             <div
@@ -63,8 +73,13 @@ const Notes = () => {
       </div>
 
       {/* Lista de notas */}
-      <div className="w-64 bg-[#1e1e1e] border-r border-gray-700 flex flex-col">
-        <div className="p-3 border-b border-gray-700 flex items-center justify-between">
+      <div className={`${isMobile && selectedNote ? 'hidden' : 'w-full md:w-64'} bg-[#1e1e1e] border-r border-gray-700 flex flex-col`}>
+        <div className="mx-[10px] p-3 border-b border-gray-700 flex items-center justify-between">
+          {isMobile && (
+            <button onClick={() => setShowSidebar(!showSidebar)} className="mr-2 text-gray-400">
+              ☰
+            </button>
+          )}
           <h2 className="text-lg font-semibold text-gray-200">Notas</h2>
           <span className="text-sm text-gray-400">{notes.length}</span>
         </div>
@@ -86,7 +101,15 @@ const Notes = () => {
       </div>
 
       {/* Contenido de la nota */}
-      <div className="flex-1 bg-[#1e1e1e] overflow-y-auto">
+      <div className={`${isMobile && !selectedNote ? 'hidden' : 'flex-1'} bg-[#1e1e1e] overflow-y-auto`}>
+        {isMobile && (
+          <button
+            onClick={() => setSelectedNote(null)}
+            className="p-3 text-gray-400 hover:text-white"
+          >
+            ← Volver
+          </button>
+        )}
         {selectedNote === 'about' && <AboutContent />}
         {selectedNote === 'skills' && <SkillsContent />}
         {selectedNote === 'projects' && <ProjectsContent />}
@@ -99,7 +122,7 @@ const AboutContent = () => {
   return (
     <div className="p-8 max-w-3xl text-gray-200">
       <h1 className="text-3xl font-bold text-gray-100 mb-4">Sobre Mí 👨‍💻</h1>
-      
+
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-200 mb-3">Juan Sebastian Mesa</h2>
         <div className="space-y-2 text-gray-400">
@@ -237,7 +260,7 @@ const ProjectsContent = () => {
             <span className="text-xs px-2 py-1 bg-gray-800 text-gray-300 rounded">Python</span>
           </div>
         </div>*/}
-      </div> 
+      </div>
 
       <div className="mt-8 p-4 bg-[#2e2e2e] rounded-lg border border-gray-700">
         <h3 className="text-lg font-semibold text-gray-100 mb-2">En desarrollo 🚧</h3>

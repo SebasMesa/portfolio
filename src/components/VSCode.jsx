@@ -5,6 +5,9 @@ const VSCode = () => {
   const [activeFile, setActiveFile] = useState('about-me.js');
   const [openTabs, setOpenTabs] = useState(['about-me.js']);
   const [expandedFolders, setExpandedFolders] = useState(['proyectos']);
+  const [showSidebar, setShowSidebar] = useState(true);
+  const isMobile = window.innerWidth < 768;
+
 
   const files = {
     'about-me.js': {
@@ -113,9 +116,9 @@ console.log("Bienvenido a mi mundo digital");`
 
   const fileStructure = [
     { name: 'about-me.js', type: 'file', icon: '📄' },
-    { 
-      name: 'proyectos', 
-      type: 'folder', 
+    {
+      name: 'proyectos',
+      type: 'folder',
       icon: '📁',
       children: [
         { name: 'ecommerce.jsx', type: 'file', icon: '⚛️' },
@@ -126,8 +129,8 @@ console.log("Bienvenido a mi mundo digital");`
   ];
 
   const toggleFolder = (folderName) => {
-    setExpandedFolders(prev => 
-      prev.includes(folderName) 
+    setExpandedFolders(prev =>
+      prev.includes(folderName)
         ? prev.filter(f => f !== folderName)
         : [...prev, folderName]
     );
@@ -161,27 +164,27 @@ console.log("Bienvenido a mi mundo digital");`
     const lines = content.split('\n');
     return lines.map((line, i) => {
       let coloredLine = line;
-      
+
       // Comments
       if (line.trim().startsWith('//')) {
         return <div key={i} className="text-gray-500">{line}</div>;
       }
-      
-    //   // Keywords
-    //   const keywords = ['const', 'let', 'var', 'function', 'return', 'import', 'export', 'from', 'default', 'interface', 'class'];
-    //   keywords.forEach(keyword => {
-    //     coloredLine = coloredLine.replace(
-    //       new RegExp(`\\b${keyword}\\b`, 'g'),
-    //       `<span class="text-purple-400">${keyword}</span>`
-    //     );
-    //   });
-      
+
+      //   // Keywords
+      //   const keywords = ['const', 'let', 'var', 'function', 'return', 'import', 'export', 'from', 'default', 'interface', 'class'];
+      //   keywords.forEach(keyword => {
+      //     coloredLine = coloredLine.replace(
+      //       new RegExp(`\\b${keyword}\\b`, 'g'),
+      //       `<span class="text-purple-400">${keyword}</span>`
+      //     );
+      //   });
+
       // Strings
       coloredLine = coloredLine.replace(
         /(["'`])(?:(?=(\\?))\2.)*?\1/g,
         '<span class="text-green-400">$&</span>'
       );
-      
+
       return (
         <div key={i} className="flex">
           <span className="text-gray-600 w-12 text-right pr-4 select-none">{i + 1}</span>
@@ -193,10 +196,15 @@ console.log("Bienvenido a mi mundo digital");`
 
   return (
     <div className="flex h-full bg-[#1e1e1e] text-gray-300 font-mono text-sm">
-      {/* Sidebar */}
-      <div className="w-64 bg-[#252526] border-r border-[#3e3e42] flex flex-col">
-        <div className="p-3 text-xs text-gray-400 uppercase tracking-wider border-b border-[#3e3e42]">
+      {/* Sidebar - colapsable en móvil */}
+      <div className={`${isMobile ? (showSidebar ? 'w-56 absolute inset-y-0 left-0 z-20 shadow-2xl' : 'hidden') : 'w-64'} bg-[#252526] border-r border-[#3e3e42] flex flex-col`}>
+        <div className="p-3 text-xs text-gray-400 uppercase tracking-wider border-b border-[#3e3e42] flex items-center justify-between">
           Explorer
+          {isMobile && (
+            <button onClick={() => setShowSidebar(false)} className="text-gray-400 hover:text-white">
+              ✕
+            </button>
+          )}
         </div>
         <div className="flex-1 overflow-y-auto p-2">
           {fileStructure.map((item) => (
@@ -213,20 +221,22 @@ console.log("Bienvenido a mi mundo digital");`
                       <ChevronRight size={16} />
                     )}
                     <Folder size={16} className="text-blue-400" />
-                    <span>{item.name}</span>
+                    <span className="text-xs md:text-sm">{item.name}</span>
                   </div>
                   {expandedFolders.includes(item.name) && (
                     <div className="ml-4">
                       {item.children.map((child) => (
                         <div
                           key={child.name}
-                          onClick={() => openFile(`${item.name}/${child.name}`)}
-                          className={`flex items-center gap-2 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer rounded ${
-                            activeFile === `${item.name}/${child.name}` ? 'bg-[#37373d]' : ''
-                          }`}
+                          onClick={() => {
+                            openFile(`${item.name}/${child.name}`);
+                            if (isMobile) setShowSidebar(false);
+                          }}
+                          className={`flex items-center gap-2 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer rounded ${activeFile === `${item.name}/${child.name}` ? 'bg-[#37373d]' : ''
+                            }`}
                         >
                           <span>{child.icon}</span>
-                          <span>{child.name}</span>
+                          <span className="text-xs md:text-sm">{child.name}</span>
                         </div>
                       ))}
                     </div>
@@ -234,13 +244,15 @@ console.log("Bienvenido a mi mundo digital");`
                 </>
               ) : (
                 <div
-                  onClick={() => openFile(item.name)}
-                  className={`flex items-center gap-2 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer rounded ${
-                    activeFile === item.name ? 'bg-[#37373d]' : ''
-                  }`}
+                  onClick={() => {
+                    openFile(item.name);
+                    if (isMobile) setShowSidebar(false);
+                  }}
+                  className={`flex items-center gap-2 px-2 py-1 hover:bg-[#2a2d2e] cursor-pointer rounded ${activeFile === item.name ? 'bg-[#37373d]' : ''
+                    }`}
                 >
                   <span>{item.icon}</span>
-                  <span>{item.name}</span>
+                  <span className="text-xs md:text-sm">{item.name}</span>
                 </div>
               )}
             </div>
@@ -249,22 +261,31 @@ console.log("Bienvenido a mi mundo digital");`
       </div>
 
       {/* Editor Area */}
-      <div className="flex-1 flex flex-col">
-        {/* Tabs */}
+      <div className="flex-1 flex flex-col min-w-0">
+        {/* Tabs con botón hamburguesa en móvil */}
         <div className="flex bg-[#252526] border-b border-[#3e3e42] overflow-x-auto">
+          {isMobile && (
+            <button
+              onClick={() => setShowSidebar(!showSidebar)}
+              className="px-3 py-2 text-gray-400 hover:text-white flex-shrink-0 border-r border-[#3e3e42]"
+            >
+              ☰
+            </button>
+          )}
           {openTabs.map((tab) => (
             <div
               key={tab}
               onClick={() => setActiveFile(tab)}
-              className={`flex items-center gap-2 px-4 py-2 border-r border-[#3e3e42] cursor-pointer group ${
-                activeFile === tab ? 'bg-[#1e1e1e]' : 'hover:bg-[#2a2d2e]'
-              }`}
+              className={`flex items-center gap-2 px-3 md:px-4 py-2 border-r border-[#3e3e42] cursor-pointer group ${activeFile === tab ? 'bg-[#1e1e1e]' : 'hover:bg-[#2a2d2e]'
+                }`}
             >
               <span className="text-xs">{getFileIcon(tab)}</span>
-              <span className="text-sm whitespace-nowrap">{tab.split('/').pop()}</span>
+              <span className="text-xs md:text-sm whitespace-nowrap">
+                {tab.split('/').pop()}
+              </span>
               <button
                 onClick={(e) => closeTab(tab, e)}
-                className="ml-2 opacity-0 group-hover:opacity-100 hover:bg-[#3e3e42] rounded px-1"
+                className="ml-1 md:ml-2 opacity-0 group-hover:opacity-100 hover:bg-[#3e3e42] rounded px-1 text-xs md:text-sm"
               >
                 ×
               </button>
@@ -272,22 +293,30 @@ console.log("Bienvenido a mi mundo digital");`
           ))}
         </div>
 
-        {/* Code Editor */}
-        <div className="flex-1 overflow-auto p-4 bg-[#1e1e1e]">
+        {/* Code Editor - texto más pequeño en móvil */}
+        <div className={`flex-1 overflow-auto p-2 md:p-4 bg-[#1e1e1e] ${isMobile ? 'text-xs' : 'text-sm'}`}>
           {activeFile && files[activeFile] ? (
-            <div className="leading-6">
+            <div className="leading-5 md:leading-6">
               {renderCode(files[activeFile].content, files[activeFile].language)}
             </div>
           ) : (
             <div className="flex items-center justify-center h-full text-gray-600">
-              <div className="text-center">
-                <FileCode size={64} className="mx-auto mb-4 opacity-50" />
-                <p>Selecciona un archivo para empezar</p>
+              <div className="text-center px-4">
+                <FileCode size={isMobile ? 48 : 64} className="mx-auto mb-4 opacity-50" />
+                <p className="text-xs md:text-sm">Selecciona un archivo para empezar</p>
               </div>
             </div>
           )}
         </div>
       </div>
+
+      {/* Overlay para cerrar sidebar en móvil */}
+      {isMobile && showSidebar && (
+        <div
+          className="fixed inset-0 bg-black/50 z-10"
+          onClick={() => setShowSidebar(false)}
+        />
+      )}
     </div>
   );
 };

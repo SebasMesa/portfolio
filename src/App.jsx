@@ -18,6 +18,7 @@ import Dev from "./pages/Dev";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Parallax } from 'react-scroll-parallax';
 import Punto from './assets/punto.png';
+import DevMobile from "./pages/DevMobile";
 
 
 
@@ -124,6 +125,8 @@ function App() {
 
           {/* Página de desarrollo */}
           <Route path="/dev" element={<Dev />} />
+          {/* Ruta para DevMobile si es necesario */}
+          <Route path="/devMobile" element={<DevMobile />} />
         </Routes>
       </Router>
     </ParallaxProvider>
