@@ -16,24 +16,18 @@ const Main = () => {
                 </p>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-[3rem] mb-[4rem]'>
-                    <Parallax speed={10}>
-                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer'>
+                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer h-[15rem]'>
                             <h3 className='text-[1.5rem] font-bold mb-[1rem]'>🌐 Desarrollo Web</h3>
                             <p className='text-[1rem] text-[#a1a1a1] font-light'>Construyo sitios web modernos y responsivos que ofrecen experiencias de usuario excepcionales. </p>
                         </div>
-                    </Parallax>
-                    <Parallax speed={5}>
-                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer'>
+                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer h-[15rem]'>
                             <h3 className='text-[1.5rem] font-bold mb-[1rem]'>🎨 Diseño UI/UX</h3>
                             <p className='text-[1rem] text-[#a1a1a1] font-light'>Diseño interfaces intuitivas y atractivas que mejoran la experiencia del usuario. </p>
                         </div>
-                    </Parallax>
-                    <Parallax speed={-5}>
-                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer'>
+                        <div className='border border-[#333] dark:border-[#444] p-5 rounded-[1rem] hover:scale-105 transition-all duration-300 cursor-pointer h-[15rem]'>
                             <h3 className='text-[1.5rem] font-bold mb-[1rem]'>💼 Consultoría Tecnológica</h3>
                             <p className='text-[1rem] text-[#a1a1a1] font-light'>Ofrezco asesoramiento experto para ayudarte a elegir las mejores tecnologías para tu proyecto. </p>
                         </div>
-                    </Parallax>
                 </div>
             </div>
         </>

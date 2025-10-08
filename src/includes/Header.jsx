@@ -20,7 +20,7 @@ const Header = () => {
                         className={`text-[2.3rem] transition-transform duration-300 ${isHovered ? 'rotate-[135deg]' : ''} cursor-pointer`}
                     /> */}
 
-                    <button onClick={() => setIsMenuOpen(true)} className={`transition-transform duration-300 grid grid-cols-2 gap-[1rem] p-2 hover:opacity-80 cursor-pointer ${isHovered ? 'rotate-[45deg]' : ''}`}>
+                    <button onClick={() => setIsMenuOpen(true)} className={`transition-transform duration-300 grid grid-cols-2 gap-[1rem] p-2 hover:opacity-80 cursor-pointer relative z-[1] ${isHovered ? 'rotate-[45deg]' : ''}`}>
                         <span className="w-2 h-2 rounded-full bg-white"></span>
                         <span className="w-2 h-2 rounded-full bg-white"></span>
                         <span className="w-2 h-2 rounded-full bg-white"></span>
@@ -30,7 +30,7 @@ const Header = () => {
                 </div>
             </div>
 
-            <div className={`fixed left-0 w-full h-full bg-black z-10 ${isMenuOpen ? 'bottom-0' : 'bottom-[-100%]'} transition-all duration-500`}>
+            <div className={`fixed left-0 w-full h-full bg-glass-black z-10 ${isMenuOpen ? 'bottom-0' : 'bottom-[-100%]'} transition-all duration-500`}>
                 <button
                     onMouseEnter={() => setIsHovered2(true)}
                     onMouseLeave={() => setIsHovered2(false)}

@@ -19,6 +19,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Parallax } from 'react-scroll-parallax';
 import Punto from './assets/punto.png';
 import DevMobile from "./pages/DevMobile";
+import DarkVeil from './ui/DarkVeil';
+
+
 
 
 
@@ -47,35 +50,43 @@ function App() {
                   <CursorGlow />
                 </div>
 
-                <header className={`${styles.paddingX} ${styles.flexStart}`}>
-                  <nav className={`${styles.boxWidth}`}>
-                    <Header />
-                  </nav>
-                </header>
+                <div className="relative h-[100%] bg-black">
 
-                <section className={`${styles.paddingX} ${styles.flexStart}`}>
-                  <div className={`${styles.boxWidth}`}>
-                    <HeroAlt />
+                  <div style={{ width: '100%', height: '100%', position: 'absolute', zIndex: 0, top: 0, left: 0, pointerEvents: 'none' }}>
+                    <DarkVeil />
                   </div>
-                </section>
 
-                <main className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-mac rounded-t-[2rem] z-[5] relative border-t-[2px] border-white/10`}>
-                    <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-1]'>
-                      <Parallax
-                        translateX={['-100vw', '100vw']}
-                        translateY={['-150px', '150px']}
-                        style={{
-                          position: 'absolute',
-                          top: 0,
-                          left: 0,
-                          width: '100vw',
-                          pointerEvents: 'none',
-                          zIndex: 1
-                        }}
-                      >
-                        <img src={Punto} alt="Punto" style={{ width: 350, height: 350, opacity: 0.3 }} />
-                      </Parallax>
+                  <header className={`${styles.paddingX} ${styles.flexStart} relative z-[100]`}>
+                    <nav className={`${styles.boxWidth}`}>
+                      <Header />
+                    </nav>
+                  </header>
+
+                  <section className={`${styles.paddingX} ${styles.flexStart} relative z-[1]`}>
+                    <div className={`${styles.boxWidth} `}>
+                      <HeroAlt />
                     </div>
+                  </section>
+                </div>
+
+
+                <main className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-black rounded-t-[2rem] z-[5] relative border-t-[2px] border-white/10`}>
+                  <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-1]'>
+                    <Parallax
+                      translateX={['-100vw', '100vw']}
+                      translateY={['-150px', '150px']}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100vw',
+                        pointerEvents: 'none',
+                        zIndex: 1
+                      }}
+                    >
+                      <img src={Punto} alt="Punto" style={{ width: 350, height: 350, opacity: 0.3 }} />
+                    </Parallax>
+                  </div>
                   <div className={`${styles.boxWidth}`}>
                     <Main />
                   </div>
@@ -83,7 +94,8 @@ function App() {
 
                 <MarqueeComponent />
 
-                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-mac rounded-b-[2rem] z-[1] relative border-b-[2px] border-white/10 mb-[6rem]`}>
+
+                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-black rounded-b-[2rem] z-[1] relative border-b-[2px] border-white/10 mb-[6rem]`}>
                   <div className={`${styles.boxWidth}`}>
                     <About />
                   </div>

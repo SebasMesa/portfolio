@@ -1,6 +1,7 @@
 import React from 'react'
 import Textra from 'react-textra';
 
+
 const HeroAlt = () => {
     return (
         <>
