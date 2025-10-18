@@ -86,8 +86,8 @@ const Skills = () => {
     return (
         <section className="py-[2rem]">
             <div className="mx-auto px-6">
-                <h2 className="md:text-[3.5rem] font-bold text-[2.5rem] text-center text-white mb-12">
-                    🛠️ Habilidades Técnicas
+                <h2 className="text-glass-macos md:text-[3.5rem] font-bold text-[2.5rem] text-center text-white mb-12">
+                    Habilidades Técnicas
                 </h2>
 
                 <div className="relative">

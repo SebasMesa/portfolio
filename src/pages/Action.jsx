@@ -7,7 +7,7 @@ const Action = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-[4rem] items-center my-[6rem]'>
             <div className=''>
-                <h2 className='md:text-[3.5rem] font-bold text-[2.5rem] '>
+                <h2 className='text-glass-macos md:text-[3.5rem] font-bold text-[2.5rem] '>
                     👾 ¿Quieres descubrir más sobre mí?
                 </h2>
 

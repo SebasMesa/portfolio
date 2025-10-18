@@ -70,7 +70,7 @@ function App() {
                 </div>
 
 
-                <main className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-black rounded-t-[2rem] z-[5] relative border-t-[2px] border-white/10`}>
+                <main className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-black rounded-t-[2rem] z-[5] relative border-t-[2px] border-white/10 border-b`}>
                   <div className='absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-[-1]'>
                     <Parallax
                       translateX={['-100vw', '100vw']}
@@ -84,15 +84,13 @@ function App() {
                         zIndex: 1
                       }}
                     >
-                      <img src={Punto} alt="Punto" style={{ width: 350, height: 350, opacity: 0.3 }} />
+                      <img src={Punto} alt="Punto" style={{ width: 250, height: 250, opacity: 0.3 }} />
                     </Parallax>
                   </div>
                   <div className={`${styles.boxWidth}`}>
                     <Main />
                   </div>
                 </main>
-
-                <MarqueeComponent />
 
 
                 <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} bg-glass-black rounded-b-[2rem] z-[1] relative border-b-[2px] border-white/10 mb-[6rem]`}>
@@ -101,7 +99,8 @@ function App() {
                   </div>
                 </section>
 
-                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} border-b border-white/10 mb-[6rem]`}>
+                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} border-b border-white/10 mb-[6rem] relative overflow-hidden`}>
+                  <div className='purple__gradient absolute bottom-[5rem] -left-[5rem] right-0 h-[400px] w-[800px] -rotate-40 -z-10 opacity-[.6]'></div>
                   <div className={`${styles.boxWidth}`}>
                     <Works />
                   </div>
@@ -113,11 +112,14 @@ function App() {
                   </div>
                 </section>
 
-                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} border-b border-white/10 mb-[6rem]`}>
+                <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} mb-[6rem]`}>
                   <div className={`${styles.boxWidth}`}>
                     <Action />
                   </div>
                 </section>
+
+                <MarqueeComponent />
+
 
                 <section className={`${styles.paddingX} ${styles.paddingY} ${styles.flexStart} border-b border-white/10 mb-[6rem]`}>
                   <div className={`${styles.boxWidth}`}>
@@ -127,7 +129,7 @@ function App() {
 
                 <footer className={` ${styles.flexCenter} py-4`}>
                   <p className="text-[1rem] text-center text-[#a1a1a1] font-light">
-                    &copy; 2024 Sebas Mesa. Todos los derechos reservados.
+                    &copy; 2025 Sebas Mesa. Todos los derechos reservados.
                   </p>
                 </footer>
 
