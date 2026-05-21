@@ -46,24 +46,24 @@ const Skills = () => {
     const skillsData = isMobile
         ? chunkArray(allSkills, 2)
         : [
-                [
-                    allSkills[0],
-                    allSkills[1],
-                    allSkills[2],
-                    allSkills[3],
-                ],
-                [
-                    allSkills[4],
-                    allSkills[7],
-                    allSkills[8],
-                    allSkills[9],
+            [
+                allSkills[0],
+                allSkills[1],
+                allSkills[2],
+                allSkills[3],
+            ],
+            [
+                allSkills[4],
+                allSkills[7],
+                allSkills[8],
+                allSkills[9],
 
-                ],
-                [
-                    allSkills[5],
-                    allSkills[6],
-                ],
-            ];
+            ],
+            [
+                allSkills[5],
+                allSkills[6],
+            ],
+        ];
 
     const [emblaRef, emblaApi] = useEmblaCarousel(
         { loop: true },
@@ -84,7 +84,7 @@ const Skills = () => {
     }, [emblaApi, onSelect]);
 
     return (
-        <section className="py-[2rem]">
+        <section className="">
             <div className="mx-auto px-6">
                 <h2 className="text-glass-macos md:text-[3.5rem] font-bold text-[2.5rem] text-center text-white mb-12">
                     Habilidades Técnicas
@@ -102,7 +102,7 @@ const Skills = () => {
                                         {group.map((skill, j) => (
                                             <div
                                                 key={j}
-                                                className="px-[2rem] py-[1rem] text-white shadow-sm hover:scale-105 transition-transform flex flex-col items-center justify-center border-[#444] border-[1px] rounded-lg"
+                                                className="px-[2rem] py-[1rem] text-white shadow-sm hover:scale-105 transition-transform flex flex-col items-center justify-center border-purple-500/20 border-[1px] rounded-lg bg-gradient-to-br from-[#2D0066]/10 to-transparent"
                                             >
                                                 <div className="text-[8rem] mb-4">{skill.icon}</div>
                                                 <span className="text-[1.2rem] font-medium">{skill.name}</span>
@@ -114,29 +114,39 @@ const Skills = () => {
                         </div>
                     </div>
 
-                    <button
-                        onClick={() => emblaApi && emblaApi.scrollPrev()}
-                        className="absolute top-1/2 left-[-3rem] -translate-y-1/2 border border-white w-10 h-10 flex items-center justify-center rounded-full text-white hover:scale-110 transition"
-                    >
-                        ❮
-                    </button>
+                    {!isMobile && (
+                        <>
+                            <button
+                                onClick={() => emblaApi && emblaApi.scrollPrev()}
+                                className="text-[30px] absolute top-1/2 left-[-3rem] -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-[#00F5FF] hover:scale-110 transition"
+                            >
+                                ❮
+                            </button>
 
-                    <button
-                        onClick={() => emblaApi && emblaApi.scrollNext()}
-                        className="absolute top-1/2 right-[-3rem] -translate-y-1/2 border border-white w-10 h-10 flex items-center justify-center rounded-full text-white hover:scale-110 transition"
-                    >
-                        ❯
-                    </button>
+                            <button
+                                onClick={() => emblaApi && emblaApi.scrollNext()}
+                                className="text-[30px] absolute top-1/2 right-[-3rem] -translate-y-1/2 w-10 h-10 flex items-center justify-center rounded-full text-[#00F5FF] hover:scale-110 transition"
+                            >
+                                ❯
+                            </button>
+                        </>
+                    )}
+
+
+
                 </div>
 
                 {/* Paginación */}
-                <div className="flex justify-center mt-[4rem] gap-3">
+                <div className="flex justify-center mt-8 md:mt-[4rem] gap-2 md:gap-3">
                     {skillsData.map((_, i) => (
                         <button
                             key={i}
-                            onClick={() => emblaApi && emblaApi.scrollTo(i)}
-                            className={`w-3 h-3 rounded-full border transition ${i === selectedIndex ? "bg-white" : "border-white"
+                            onClick={() => scrollTo(i)}
+                            className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all duration-300 ${i === selectedIndex
+                                ? "bg-[#00f5ff] scale-125"
+                                : "border border-[#00f5ff] hover:bg-[#00f5ff]/50"
                                 }`}
+                            aria-label={`Ir al proyecto ${i + 1}`}
                         />
                     ))}
                 </div>

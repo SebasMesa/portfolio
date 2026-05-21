@@ -1,43 +1,42 @@
-import React from 'react'
+import React from 'react';
 import Marquee from 'react-fast-marquee';
-import Punto from '../assets/punto.png';
 
 const MarqueeComponent = () => {
-  return (
-    <Marquee>
-        <div className='flex gap-10 text-[1.5rem] md:text-[2rem] font-bold text-[#222222] dark:text-[#f1f1f1] py-[3.5rem] border-t border-b border-[#333] dark:border-[#444] items-center'>
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#ReactJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#JavaScript</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#TailwindCSS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#NextJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#NextJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#NodeJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#ExpressJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#MongoDB</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#ExpressJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#MongoDB</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#ThreeJS</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#UI/UX</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#WebDevelopment</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#WebDesign</span>
-            <img src={Punto} alt="Punto" className='w-[75px] h-[75px] my-auto' />
-            <span className='hover:text-white hover:scale-110 transition-all duration-300 cursor-pointer'>#FullStack</span>
-        </div>
-    </Marquee>
-  )
-}
+  const technologies = [
+    "ReactJS", "JavaScript", "TailwindCSS", "NextJS", 
+    "NodeJS", "ExpressJS", "MongoDB", "ThreeJS", 
+    "UI/UX", "WebDevelopment", "WebDesign", "FullStack"
+  ];
 
-export default MarqueeComponent
+  const SparkleIcon = () => (
+    <svg 
+      width="30" 
+      height="30" 
+      viewBox="0 0 200 200" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg"
+      className="mx-4 md:mx-8 text-[#00F5FF] fill-current"
+    >
+      <path d="M100 0C100 55.2285 144.772 100 200 100C144.772 100 100 144.772 100 200C100 144.772 55.2285 100 0 100C55.2285 100 100 55.2285 100 0Z" />
+    </svg>
+  );
+
+  return (
+    <div className="w-full bg-[#050505]">
+      <Marquee gradient={false} speed={50}>
+        <div className="flex items-center py-[4rem] border-t border-b border-[#333]/50 font-mono">
+          {technologies.map((tech, index) => (
+            <React.Fragment key={index}>
+              <span className="text-[1.5rem] md:text-[2rem] font-bold text-[#f1f1f1] hover:text-purple-400 hover:scale-110 transition-all duration-300 cursor-pointer px-4">
+                #{tech}
+              </span>
+              <SparkleIcon />
+            </React.Fragment>
+          ))}
+        </div>
+      </Marquee>
+    </div>
+  );
+};
+
+export default MarqueeComponent;

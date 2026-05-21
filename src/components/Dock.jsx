@@ -25,11 +25,11 @@ const Dock = ({ setOpenApp }) => {
             label="Safari"
             onClick={() => setOpenApp("safari")}
           />
-          <DockItem
+          {/* <DockItem
             icon={Youtube}
             label="Youtube Music"
             onClick={() => setOpenApp("spotify")}
-          />
+          /> */}
 
           <div className="w-[2px] h-[40px] bg-white/20 hidden md:block" />
 

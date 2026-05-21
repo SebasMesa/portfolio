@@ -21,6 +21,10 @@
   font-style: normal;
 }
 
+* {
+   /* cursor: none!important; */
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -33,6 +37,8 @@ body {
   overflow-x: hidden;
 }
 
+
+
 :root {
   --black-gradient: linear-gradient(144.39deg,
       #ffffff -278.56%,
@@ -40,7 +46,6 @@ body {
       #11101d 91.61%);
   --card-shadow: 0px 20px 100px -10px rgba(66, 71, 91, 0.1);
 }
-
 
 
 /* ::-webkit-scrollbar {
@@ -56,11 +61,11 @@ body {
   background: linear-gradient(45deg, #00ffcc, #0099ff);
   border-radius: 10px;
   border: 2px solid #0d0d0d;
-}
+} */
 
 * {
   scroll-behavior: smooth;
-} */
+}
 
 .text-gradient {
   background: radial-gradient(64.18% 64.18% at 71.16% 35.69%,
@@ -280,6 +285,7 @@ body {
   color: #e0f7fa;
 }
 
+
 .bg-glass {
   background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -359,4 +365,8 @@ body {
   fill: url(#metalGradient);
   filter: url(#metal-filter);
   font-family: 'Arial Black', sans-serif;
+}
+
+.moradoGradiente {
+background: linear-gradient(135deg, #2D0066 0%, #7127BA 50%, #BC13FE 100%);
 }

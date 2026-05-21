@@ -13,7 +13,8 @@ export default defineConfig({
       '.ngrok-free.app',
       '.tunnelto.dev',
       '.trycloudflare.com',
-      'dfdc170a7fe3.ngrok-free.app'
+      'dfdc170a7fe3.ngrok-free.app',
+      '.tunnelmole.net'
     ]
 
   },
