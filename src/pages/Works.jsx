@@ -44,12 +44,34 @@ const allWorks = [
   },
   {
     nombre: "Take a Trip",
-    descripcion: "Tienda de repuestos ubicada en medellin colombia con gran variedad de productos",
-    descripcionBreve: "Pagina sencilla, minimalista de repuestos",
+    descripcion: "Creación de plataforma web para agencia de viajes, con diseño personalizado y todas las funciones necesarias para la gestión de reservas y paquetes turísticos.",
+    descripcionBreve: "Agencia de viajes con sistema de reservas",
     image: TakeATrip,
     link: "https://takeatripportfolio.page.gd/",
     category: "Website",
     languages: ["PHP", "TailwindCSS", "MySQL"]
+  },
+
+  {
+    nombre: "Syntra",
+    descripcion: "Creación de sistemas inteligentes que trabajan por tu empresa para que tu puedas enfocarte en crecer.",
+    descripcionBreve: "Sistemas inteligentes para empresas",
+    image: TakeATrip,
+    link: "https://syntra-beta-peach.vercel.app/",
+    category: "SaaS",
+    languages: ["Python", "React", "Firebase"]
+  },
+
+  {
+
+    // Galeria de arte contemporaneo
+    nombre: "Lumina",
+    descripcion: " Galería de arte contemporáneo con diseño minimalista y todas las funciones necesarias para la gestión de exposiciones y obras.",
+    descripcionBreve: "Galería de arte contemporáneo",
+    image: TakeATrip,
+    link: "https://lumina-one-iota.vercel.app/",
+    category: "Art Gallery",
+    languages: ["TailwindCSS", "React", "Firebase"]
   },
 ];
 
