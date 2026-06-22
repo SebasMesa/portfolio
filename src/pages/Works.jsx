@@ -9,8 +9,11 @@ import Bonco from "../assets/bonco.png"
 import Mansory from "../assets/mansory.png"
 import MansoryPhone from "../assets/mansoryphone.png"
 import TakeATrip from "../assets/takeatrip.png"
+import Syntra from "../assets/syntra.png"
+import Lumina from "../assets/lumina.png"
 import { Languages } from "lucide-react";
 import { div } from "three/tsl";
+
 
 const allWorks = [
   {
@@ -56,7 +59,7 @@ const allWorks = [
     nombre: "Syntra",
     descripcion: "Creación de sistemas inteligentes que trabajan por tu empresa para que tu puedas enfocarte en crecer.",
     descripcionBreve: "Sistemas inteligentes para empresas",
-    image: TakeATrip,
+    image: Syntra,
     link: "https://syntra-beta-peach.vercel.app/",
     category: "SaaS",
     languages: ["Python", "React", "Firebase"]
@@ -68,7 +71,7 @@ const allWorks = [
     nombre: "Lumina",
     descripcion: " Galería de arte contemporáneo con diseño minimalista y todas las funciones necesarias para la gestión de exposiciones y obras.",
     descripcionBreve: "Galería de arte contemporáneo",
-    image: TakeATrip,
+    image: Lumina,
     link: "https://lumina-one-iota.vercel.app/",
     category: "Art Gallery",
     languages: ["TailwindCSS", "React", "Firebase"]
